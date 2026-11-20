@@ -11,3 +11,8 @@ wheels/
 
 #données
 data/
+
+#mlflow
+mlflow.db
+mlruns/
+mlartifacts/
