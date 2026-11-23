@@ -83,14 +83,23 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      # Nettoie le nom d'utilisateur (espaces, retours à la ligne) et le passe en minuscules,
+      # pour que le nom de l'image soit toujours valide
+      - name: Préparer le nom de l'image
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        run: |
+          UTILISATEUR=$(echo "$DOCKERHUB_USERNAME" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]')
+          echo "IMAGE=$UTILISATEUR/${{ env.IMAGE_NAME }}" >> $GITHUB_ENV
+
       - name: Construire et publier l'image
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ github.sha }}
 
       # Redéploiement de l'API sur l'hébergeur (Render), si le secret est configuré
       - name: Déclencher le redéploiement de l'API
@@ -107,4 +116,4 @@ jobs:
       - name: Résumé
         run: |
           echo "### Déploiement réussi" >> $GITHUB_STEP_SUMMARY
-          echo "Image publiée : \`${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "Image publiée : \`${{ env.IMAGE }}:${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
