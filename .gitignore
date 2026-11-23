@@ -10,9 +10,11 @@ wheels/
 .venv
 
 #données
-
+data/
 
 #mlflow
 mlflow.db
 mlruns/
 mlartifacts/
+
+.DS_Store
