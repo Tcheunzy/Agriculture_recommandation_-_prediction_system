@@ -1,0 +1,23 @@
+# Environnements et caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Données, expériences et notebooks : inutiles pour faire tourner l'API
+data/
+notebooks/
+mlflow.db
+mlruns/
+mlartifacts/
+
+# Autres parties du projet
+app/
+tests/
+
+# Git et éditeur
+.git/
+.github/
+.vscode/
+*.md
