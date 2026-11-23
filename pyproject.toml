@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "fastapi>=0.162.4",
     "ipykernel>=7.4.0",
     "lightgbm>=4.7.0",
     "matplotlib>=3.11.2",
@@ -12,7 +13,20 @@ dependencies = [
     "numpy>=2.5.4",
     "pandas>=3.1.1",
     "pathlib>=1.0.1",
+    "pydantic>=2.14.3",
+    "pytest>=9.2.0",
     "scikit-learn>=1.9.1",
     "seaborn>=0.13.2",
+    "sqlalchemy>=2.1.8",
     "xgboost>=3.4.1",
 ]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.2.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

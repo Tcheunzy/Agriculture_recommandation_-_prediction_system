@@ -1,0 +1,704 @@
+Area,Crop,nb_annees
+Albania,Maize,20
+Albania,Potatoes,20
+Albania,Rice,4
+Albania,Sorghum,3
+Albania,Soybean,20
+Albania,Wheat,20
+Algeria,Maize,20
+Algeria,Potatoes,20
+Algeria,Rice,20
+Algeria,Wheat,20
+Angola,Cassava,20
+Angola,Maize,20
+Angola,Potatoes,20
+Angola,Rice,20
+Angola,Sorghum,10
+Angola,Soybean,10
+Angola,Sweet potatoes,20
+Angola,Wheat,20
+Argentina,Cassava,20
+Argentina,Maize,20
+Argentina,Potatoes,20
+Argentina,Rice,20
+Argentina,Sorghum,20
+Argentina,Soybean,20
+Argentina,Sweet potatoes,20
+Argentina,Wheat,20
+Armenia,Maize,18
+Armenia,Potatoes,18
+Armenia,Wheat,18
+Australia,Maize,20
+Australia,Potatoes,20
+Australia,Rice,20
+Australia,Sorghum,20
+Australia,Soybean,20
+Australia,Sweet potatoes,20
+Australia,Wheat,20
+Austria,Maize,20
+Austria,Potatoes,20
+Austria,Soybean,20
+Austria,Wheat,20
+Azerbaijan,Maize,18
+Azerbaijan,Potatoes,18
+Azerbaijan,Rice,18
+Azerbaijan,Soybean,16
+Azerbaijan,Wheat,18
+Bahamas,Cassava,20
+Bahamas,Maize,20
+Bahamas,Sweet potatoes,20
+Bahrain,Potatoes,20
+Bahrain,Sweet potatoes,6
+Bangladesh,Maize,20
+Bangladesh,Potatoes,20
+Bangladesh,Rice,20
+Bangladesh,Sorghum,20
+Bangladesh,Soybean,5
+Bangladesh,Sweet potatoes,20
+Bangladesh,Wheat,20
+Belarus,Maize,18
+Belarus,Potatoes,18
+Belarus,Wheat,18
+Belgium,Maize,10
+Belgium,Potatoes,10
+Belgium,Wheat,10
+Bolivia (Plurinational State of),Cassava,20
+Bolivia (Plurinational State of),Maize,20
+Bolivia (Plurinational State of),Plantains and others,20
+Bolivia (Plurinational State of),Potatoes,20
+Bolivia (Plurinational State of),Rice,20
+Bolivia (Plurinational State of),Sorghum,20
+Bolivia (Plurinational State of),Soybean,20
+Bolivia (Plurinational State of),Sweet potatoes,20
+Bolivia (Plurinational State of),Wheat,20
+Botswana,Maize,20
+Botswana,Sorghum,20
+Botswana,Wheat,19
+Brazil,Cassava,20
+Brazil,Maize,20
+Brazil,Potatoes,20
+Brazil,Rice,20
+Brazil,Sorghum,20
+Brazil,Soybean,20
+Brazil,Sweet potatoes,20
+Brazil,Wheat,20
+Brazil,Yams,20
+Bulgaria,Maize,20
+Bulgaria,Potatoes,20
+Bulgaria,Rice,20
+Bulgaria,Sorghum,20
+Bulgaria,Soybean,20
+Bulgaria,Wheat,20
+Burkina Faso,Cassava,20
+Burkina Faso,Maize,20
+Burkina Faso,Potatoes,20
+Burkina Faso,Rice,20
+Burkina Faso,Sorghum,20
+Burkina Faso,Soybean,20
+Burkina Faso,Sweet potatoes,20
+Burkina Faso,Yams,20
+Burundi,Cassava,20
+Burundi,Maize,20
+Burundi,Potatoes,20
+Burundi,Rice,20
+Burundi,Sorghum,20
+Burundi,Soybean,20
+Burundi,Sweet potatoes,20
+Burundi,Wheat,20
+Burundi,Yams,20
+Cameroon,Cassava,20
+Cameroon,Maize,20
+Cameroon,Plantains and others,20
+Cameroon,Potatoes,20
+Cameroon,Rice,20
+Cameroon,Sorghum,20
+Cameroon,Soybean,20
+Cameroon,Sweet potatoes,20
+Cameroon,Wheat,20
+Cameroon,Yams,20
+Canada,Maize,20
+Canada,Potatoes,20
+Canada,Soybean,20
+Canada,Wheat,20
+Central African Republic,Cassava,20
+Central African Republic,Maize,20
+Central African Republic,Plantains and others,20
+Central African Republic,Potatoes,20
+Central African Republic,Rice,20
+Central African Republic,Sorghum,20
+Central African Republic,Yams,20
+Chile,Maize,20
+Chile,Potatoes,20
+Chile,Rice,20
+Chile,Sweet potatoes,20
+Chile,Wheat,20
+"China, mainland",Cassava,20
+"China, mainland",Maize,20
+"China, mainland",Potatoes,20
+"China, mainland",Rice,20
+"China, mainland",Sorghum,20
+"China, mainland",Soybean,20
+"China, mainland",Sweet potatoes,20
+"China, mainland",Wheat,20
+Colombia,Cassava,20
+Colombia,Maize,20
+Colombia,Plantains and others,20
+Colombia,Potatoes,20
+Colombia,Rice,20
+Colombia,Sorghum,20
+Colombia,Soybean,20
+Colombia,Wheat,20
+Colombia,Yams,20
+Congo,Cassava,20
+Congo,Maize,20
+Congo,Plantains and others,20
+Congo,Potatoes,20
+Congo,Rice,20
+Congo,Sweet potatoes,20
+Congo,Yams,20
+Croatia,Maize,18
+Croatia,Potatoes,18
+Croatia,Sorghum,18
+Croatia,Soybean,18
+Croatia,Wheat,18
+Czechia,Maize,17
+Czechia,Potatoes,17
+Czechia,Soybean,17
+Czechia,Wheat,17
+Côte d'Ivoire,Cassava,20
+Côte d'Ivoire,Maize,20
+Côte d'Ivoire,Plantains and others,20
+Côte d'Ivoire,Rice,20
+Côte d'Ivoire,Sorghum,20
+Côte d'Ivoire,Soybean,20
+Côte d'Ivoire,Sweet potatoes,20
+Côte d'Ivoire,Yams,20
+Denmark,Potatoes,20
+Denmark,Wheat,20
+Dominican Republic,Cassava,20
+Dominican Republic,Maize,20
+Dominican Republic,Plantains and others,20
+Dominican Republic,Potatoes,20
+Dominican Republic,Rice,20
+Dominican Republic,Sorghum,20
+Dominican Republic,Sweet potatoes,20
+Dominican Republic,Yams,20
+Ecuador,Cassava,20
+Ecuador,Maize,20
+Ecuador,Plantains and others,20
+Ecuador,Potatoes,20
+Ecuador,Rice,20
+Ecuador,Sorghum,20
+Ecuador,Soybean,20
+Ecuador,Sweet potatoes,20
+Ecuador,Wheat,20
+Egypt,Maize,20
+Egypt,Potatoes,20
+Egypt,Rice,20
+Egypt,Sorghum,20
+Egypt,Soybean,20
+Egypt,Sweet potatoes,20
+Egypt,Wheat,20
+El Salvador,Cassava,20
+El Salvador,Maize,20
+El Salvador,Plantains and others,20
+El Salvador,Potatoes,20
+El Salvador,Rice,20
+El Salvador,Sorghum,20
+El Salvador,Soybean,20
+El Salvador,Sweet potatoes,20
+Eritrea,Maize,17
+Eritrea,Potatoes,17
+Eritrea,Sorghum,17
+Eritrea,Wheat,17
+Estonia,Potatoes,18
+Estonia,Wheat,18
+Finland,Potatoes,20
+Finland,Wheat,20
+France,Maize,20
+France,Potatoes,20
+France,Rice,20
+France,Sorghum,20
+France,Soybean,20
+France,Wheat,20
+Germany,Maize,20
+Germany,Potatoes,20
+Germany,Soybean,17
+Germany,Wheat,20
+Ghana,Cassava,20
+Ghana,Maize,20
+Ghana,Plantains and others,20
+Ghana,Rice,20
+Ghana,Sorghum,20
+Ghana,Sweet potatoes,14
+Ghana,Yams,20
+Greece,Maize,20
+Greece,Potatoes,20
+Greece,Rice,20
+Greece,Sorghum,20
+Greece,Soybean,20
+Greece,Sweet potatoes,20
+Greece,Wheat,20
+Guatemala,Cassava,20
+Guatemala,Maize,20
+Guatemala,Plantains and others,20
+Guatemala,Potatoes,20
+Guatemala,Rice,20
+Guatemala,Sorghum,20
+Guatemala,Soybean,20
+Guatemala,Sweet potatoes,17
+Guatemala,Wheat,20
+Guinea,Cassava,20
+Guinea,Maize,20
+Guinea,Plantains and others,20
+Guinea,Potatoes,7
+Guinea,Rice,20
+Guinea,Sorghum,20
+Guinea,Sweet potatoes,20
+Guinea,Yams,20
+Guinea-Bissau,Cassava,20
+Guinea-Bissau,Maize,20
+Guinea-Bissau,Plantains and others,20
+Guinea-Bissau,Rice,20
+Guinea-Bissau,Sorghum,20
+Guyana,Cassava,20
+Guyana,Maize,20
+Guyana,Plantains and others,20
+Guyana,Rice,20
+Guyana,Yams,13
+Haiti,Cassava,20
+Haiti,Maize,20
+Haiti,Plantains and others,20
+Haiti,Potatoes,20
+Haiti,Rice,20
+Haiti,Sorghum,20
+Haiti,Sweet potatoes,20
+Haiti,Yams,20
+Honduras,Cassava,20
+Honduras,Maize,20
+Honduras,Plantains and others,20
+Honduras,Potatoes,20
+Honduras,Rice,20
+Honduras,Sorghum,20
+Honduras,Soybean,17
+Honduras,Sweet potatoes,20
+Honduras,Wheat,20
+Hungary,Maize,20
+Hungary,Potatoes,20
+Hungary,Rice,20
+Hungary,Sorghum,20
+Hungary,Soybean,20
+Hungary,Wheat,20
+India,Cassava,20
+India,Maize,20
+India,Potatoes,20
+India,Rice,20
+India,Sorghum,20
+India,Soybean,20
+India,Sweet potatoes,20
+India,Wheat,20
+Indonesia,Cassava,20
+Indonesia,Maize,20
+Indonesia,Potatoes,20
+Indonesia,Rice,20
+Indonesia,Soybean,20
+Indonesia,Sweet potatoes,20
+Iran (Islamic Republic of),Maize,20
+Iran (Islamic Republic of),Potatoes,20
+Iran (Islamic Republic of),Rice,20
+Iran (Islamic Republic of),Soybean,20
+Iran (Islamic Republic of),Wheat,20
+Iraq,Maize,20
+Iraq,Potatoes,20
+Iraq,Rice,20
+Iraq,Sorghum,20
+Iraq,Soybean,20
+Iraq,Wheat,20
+Ireland,Potatoes,20
+Ireland,Wheat,20
+Italy,Maize,20
+Italy,Potatoes,20
+Italy,Rice,20
+Italy,Sorghum,20
+Italy,Soybean,20
+Italy,Sweet potatoes,20
+Italy,Wheat,20
+Jamaica,Cassava,20
+Jamaica,Maize,20
+Jamaica,Plantains and others,20
+Jamaica,Potatoes,20
+Jamaica,Rice,20
+Jamaica,Sweet potatoes,20
+Jamaica,Yams,20
+Japan,Maize,20
+Japan,Potatoes,20
+Japan,Rice,20
+Japan,Soybean,20
+Japan,Sweet potatoes,20
+Japan,Wheat,20
+Japan,Yams,20
+Kazakhstan,Maize,18
+Kazakhstan,Potatoes,18
+Kazakhstan,Rice,18
+Kazakhstan,Soybean,18
+Kazakhstan,Wheat,18
+Kenya,Cassava,20
+Kenya,Maize,20
+Kenya,Plantains and others,20
+Kenya,Potatoes,20
+Kenya,Rice,20
+Kenya,Sorghum,20
+Kenya,Soybean,20
+Kenya,Sweet potatoes,20
+Kenya,Wheat,20
+Kenya,Yams,20
+Lao People's Democratic Republic,Cassava,20
+Lao People's Democratic Republic,Maize,20
+Lao People's Democratic Republic,Potatoes,20
+Lao People's Democratic Republic,Rice,20
+Lao People's Democratic Republic,Soybean,20
+Lao People's Democratic Republic,Sweet potatoes,20
+Latvia,Potatoes,18
+Latvia,Wheat,18
+Lebanon,Maize,20
+Lebanon,Potatoes,20
+Lebanon,Sorghum,20
+Lebanon,Wheat,20
+Lesotho,Maize,20
+Lesotho,Potatoes,20
+Lesotho,Sorghum,20
+Lesotho,Wheat,20
+Libya,Maize,20
+Libya,Potatoes,20
+Libya,Wheat,20
+Lithuania,Maize,18
+Lithuania,Potatoes,18
+Lithuania,Wheat,18
+Madagascar,Cassava,20
+Madagascar,Maize,20
+Madagascar,Potatoes,20
+Madagascar,Rice,20
+Madagascar,Sorghum,20
+Madagascar,Soybean,20
+Madagascar,Sweet potatoes,20
+Madagascar,Wheat,20
+Malawi,Cassava,20
+Malawi,Maize,20
+Malawi,Plantains and others,20
+Malawi,Potatoes,20
+Malawi,Rice,20
+Malawi,Sorghum,20
+Malawi,Soybean,7
+Malawi,Wheat,20
+Malaysia,Cassava,20
+Malaysia,Maize,20
+Malaysia,Rice,20
+Malaysia,Soybean,1
+Malaysia,Sweet potatoes,20
+Mali,Cassava,20
+Mali,Maize,20
+Mali,Potatoes,20
+Mali,Rice,20
+Mali,Sorghum,20
+Mali,Soybean,20
+Mali,Sweet potatoes,20
+Mali,Wheat,20
+Mali,Yams,20
+Mauritania,Maize,20
+Mauritania,Potatoes,20
+Mauritania,Rice,20
+Mauritania,Sorghum,20
+Mauritania,Sweet potatoes,20
+Mauritania,Wheat,20
+Mauritania,Yams,20
+Mauritius,Cassava,20
+Mauritius,Maize,20
+Mauritius,Potatoes,20
+Mauritius,Rice,5
+Mauritius,Sweet potatoes,20
+Mexico,Cassava,20
+Mexico,Maize,20
+Mexico,Potatoes,20
+Mexico,Rice,20
+Mexico,Sorghum,20
+Mexico,Soybean,20
+Mexico,Sweet potatoes,20
+Mexico,Wheat,20
+Montenegro,Maize,4
+Montenegro,Potatoes,4
+Montenegro,Wheat,4
+Morocco,Maize,20
+Morocco,Potatoes,20
+Morocco,Rice,20
+Morocco,Sorghum,20
+Morocco,Soybean,20
+Morocco,Sweet potatoes,20
+Morocco,Wheat,20
+Mozambique,Cassava,20
+Mozambique,Maize,20
+Mozambique,Potatoes,20
+Mozambique,Rice,20
+Mozambique,Sorghum,20
+Mozambique,Sweet potatoes,20
+Mozambique,Wheat,20
+Namibia,Maize,20
+Namibia,Potatoes,10
+Namibia,Sorghum,20
+Namibia,Wheat,20
+Nepal,Maize,20
+Nepal,Potatoes,20
+Nepal,Rice,20
+Nepal,Soybean,20
+Nepal,Wheat,20
+Netherlands,Maize,20
+Netherlands,Potatoes,20
+Netherlands,Wheat,20
+New Zealand,Maize,20
+New Zealand,Potatoes,20
+New Zealand,Sweet potatoes,20
+New Zealand,Wheat,20
+Nicaragua,Cassava,20
+Nicaragua,Maize,20
+Nicaragua,Plantains and others,20
+Nicaragua,Potatoes,20
+Nicaragua,Rice,20
+Nicaragua,Sorghum,20
+Nicaragua,Soybean,20
+Nicaragua,Yams,19
+Niger,Cassava,20
+Niger,Maize,20
+Niger,Potatoes,20
+Niger,Rice,20
+Niger,Sorghum,20
+Niger,Sweet potatoes,20
+Niger,Wheat,20
+Norway,Potatoes,20
+Norway,Wheat,20
+Pakistan,Maize,20
+Pakistan,Potatoes,20
+Pakistan,Rice,20
+Pakistan,Sorghum,20
+Pakistan,Soybean,20
+Pakistan,Sweet potatoes,20
+Pakistan,Wheat,20
+Papua New Guinea,Cassava,20
+Papua New Guinea,Maize,20
+Papua New Guinea,Potatoes,20
+Papua New Guinea,Rice,20
+Papua New Guinea,Sorghum,20
+Papua New Guinea,Sweet potatoes,20
+Papua New Guinea,Yams,20
+Peru,Cassava,20
+Peru,Maize,20
+Peru,Plantains and others,20
+Peru,Potatoes,20
+Peru,Rice,20
+Peru,Sorghum,20
+Peru,Soybean,20
+Peru,Sweet potatoes,20
+Peru,Wheat,20
+Poland,Maize,20
+Poland,Potatoes,20
+Poland,Soybean,7
+Poland,Wheat,20
+Portugal,Maize,20
+Portugal,Potatoes,20
+Portugal,Rice,20
+Portugal,Sweet potatoes,20
+Portugal,Wheat,20
+Portugal,Yams,20
+Qatar,Maize,20
+Qatar,Potatoes,20
+Qatar,Wheat,20
+Republic of Korea,Maize,20
+Republic of Korea,Potatoes,20
+Republic of Korea,Rice,20
+Republic of Korea,Sorghum,20
+Republic of Korea,Soybean,20
+Republic of Korea,Sweet potatoes,20
+Republic of Korea,Wheat,20
+Republic of Moldova,Maize,18
+Republic of Moldova,Potatoes,18
+Republic of Moldova,Sorghum,18
+Republic of Moldova,Soybean,18
+Republic of Moldova,Wheat,18
+Romania,Maize,20
+Romania,Potatoes,20
+Romania,Rice,20
+Romania,Sorghum,20
+Romania,Soybean,20
+Romania,Wheat,20
+Russian Federation,Maize,18
+Russian Federation,Potatoes,18
+Russian Federation,Rice,18
+Russian Federation,Sorghum,18
+Russian Federation,Soybean,18
+Russian Federation,Wheat,18
+Rwanda,Cassava,20
+Rwanda,Maize,20
+Rwanda,Potatoes,20
+Rwanda,Rice,20
+Rwanda,Sorghum,20
+Rwanda,Soybean,20
+Rwanda,Sweet potatoes,20
+Rwanda,Wheat,20
+Rwanda,Yams,20
+Saudi Arabia,Maize,20
+Saudi Arabia,Potatoes,20
+Saudi Arabia,Sorghum,20
+Saudi Arabia,Wheat,20
+Senegal,Cassava,20
+Senegal,Maize,20
+Senegal,Potatoes,20
+Senegal,Rice,20
+Senegal,Sorghum,20
+Senegal,Sweet potatoes,20
+Slovakia,Maize,17
+Slovakia,Potatoes,17
+Slovakia,Sorghum,17
+Slovakia,Soybean,17
+Slovakia,Wheat,17
+Slovenia,Maize,18
+Slovenia,Potatoes,18
+Slovenia,Soybean,18
+Slovenia,Wheat,18
+South Africa,Maize,20
+South Africa,Potatoes,20
+South Africa,Rice,20
+South Africa,Sorghum,20
+South Africa,Soybean,20
+South Africa,Sweet potatoes,20
+South Africa,Wheat,20
+Spain,Maize,20
+Spain,Potatoes,20
+Spain,Rice,20
+Spain,Sorghum,20
+Spain,Soybean,20
+Spain,Sweet potatoes,20
+Spain,Wheat,20
+Sri Lanka,Cassava,20
+Sri Lanka,Maize,20
+Sri Lanka,Plantains and others,20
+Sri Lanka,Potatoes,20
+Sri Lanka,Rice,20
+Sri Lanka,Sorghum,20
+Sri Lanka,Soybean,20
+Sri Lanka,Sweet potatoes,20
+Suriname,Cassava,20
+Suriname,Maize,20
+Suriname,Plantains and others,20
+Suriname,Rice,20
+Suriname,Soybean,20
+Suriname,Sweet potatoes,20
+Sweden,Potatoes,20
+Sweden,Wheat,20
+Switzerland,Maize,20
+Switzerland,Potatoes,20
+Switzerland,Soybean,20
+Switzerland,Wheat,20
+Syrian Arab Republic,Maize,20
+Syrian Arab Republic,Potatoes,20
+Syrian Arab Republic,Rice,7
+Syrian Arab Republic,Sorghum,20
+Syrian Arab Republic,Soybean,20
+Syrian Arab Republic,Wheat,20
+Tajikistan,Maize,18
+Tajikistan,Potatoes,18
+Tajikistan,Rice,18
+Tajikistan,Sorghum,18
+Tajikistan,Wheat,18
+Thailand,Cassava,20
+Thailand,Maize,20
+Thailand,Potatoes,20
+Thailand,Rice,20
+Thailand,Sorghum,20
+Thailand,Soybean,20
+Thailand,Wheat,20
+The former Yugoslav Republic of Macedonia,Maize,18
+The former Yugoslav Republic of Macedonia,Potatoes,18
+The former Yugoslav Republic of Macedonia,Rice,18
+The former Yugoslav Republic of Macedonia,Sorghum,8
+The former Yugoslav Republic of Macedonia,Soybean,7
+The former Yugoslav Republic of Macedonia,Wheat,18
+Tunisia,Potatoes,20
+Tunisia,Sorghum,20
+Tunisia,Wheat,20
+Turkey,Maize,20
+Turkey,Potatoes,20
+Turkey,Rice,20
+Turkey,Sorghum,6
+Turkey,Soybean,20
+Turkey,Wheat,20
+Uganda,Cassava,20
+Uganda,Maize,20
+Uganda,Plantains and others,20
+Uganda,Potatoes,20
+Uganda,Rice,20
+Uganda,Sorghum,20
+Uganda,Soybean,20
+Uganda,Sweet potatoes,20
+Uganda,Wheat,20
+Ukraine,Maize,18
+Ukraine,Potatoes,18
+Ukraine,Rice,18
+Ukraine,Sorghum,18
+Ukraine,Soybean,18
+Ukraine,Wheat,18
+United Kingdom,Potatoes,20
+United Kingdom,Wheat,20
+United Republic of Tanzania,Cassava,20
+United Republic of Tanzania,Maize,20
+United Republic of Tanzania,Plantains and others,20
+United Republic of Tanzania,Potatoes,20
+United Republic of Tanzania,Rice,20
+United Republic of Tanzania,Sorghum,20
+United Republic of Tanzania,Soybean,20
+United Republic of Tanzania,Sweet potatoes,20
+United Republic of Tanzania,Wheat,20
+United Republic of Tanzania,Yams,20
+United States of America,Maize,20
+United States of America,Potatoes,20
+United States of America,Rice,20
+United States of America,Sorghum,20
+United States of America,Soybean,20
+United States of America,Sweet potatoes,20
+United States of America,Wheat,20
+Uruguay,Maize,20
+Uruguay,Potatoes,20
+Uruguay,Rice,20
+Uruguay,Sorghum,20
+Uruguay,Soybean,20
+Uruguay,Sweet potatoes,20
+Uruguay,Wheat,20
+Venezuela (Bolivarian Republic of),Cassava,20
+Venezuela (Bolivarian Republic of),Maize,20
+Venezuela (Bolivarian Republic of),Plantains and others,20
+Venezuela (Bolivarian Republic of),Potatoes,20
+Venezuela (Bolivarian Republic of),Rice,20
+Venezuela (Bolivarian Republic of),Sorghum,20
+Venezuela (Bolivarian Republic of),Soybean,20
+Venezuela (Bolivarian Republic of),Sweet potatoes,20
+Venezuela (Bolivarian Republic of),Wheat,20
+Venezuela (Bolivarian Republic of),Yams,20
+Viet Nam,Cassava,20
+Viet Nam,Maize,20
+Viet Nam,Potatoes,20
+Viet Nam,Rice,20
+Viet Nam,Soybean,20
+Viet Nam,Sweet potatoes,20
+Zambia,Cassava,20
+Zambia,Maize,20
+Zambia,Potatoes,20
+Zambia,Rice,20
+Zambia,Sorghum,20
+Zambia,Soybean,20
+Zambia,Sweet potatoes,20
+Zambia,Wheat,20
+Zimbabwe,Cassava,20
+Zimbabwe,Maize,20
+Zimbabwe,Potatoes,20
+Zimbabwe,Rice,20
+Zimbabwe,Sorghum,20
+Zimbabwe,Soybean,20
+Zimbabwe,Sweet potatoes,20
+Zimbabwe,Wheat,20
