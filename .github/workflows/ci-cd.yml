@@ -1,0 +1,110 @@
+name: CI/CD
+
+# Déclencheurs : chaque push sur main, chaque pull request vers main,
+# et lancement manuel depuis l'onglet Actions de GitHub
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: agritech-api
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  # ---------- 1. Tests unitaires ----------
+  tests:
+    name: Tests unitaires
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: api/requirements.txt
+
+      # Les dépendances de production de l'API + les outils de test :
+      # on teste exactement ce qui sera installé dans l'image Docker
+      - name: Installer les dépendances
+        run: |
+          pip install -r api/requirements.txt
+          pip install pytest httpx
+
+      - name: Lancer les tests
+        run: pytest -v
+
+  # ---------- 2. Construction et vérification de l'image Docker ----------
+  build:
+    name: Build de l'image Docker
+    runs-on: ubuntu-latest
+    needs: tests            # ne s'exécute que si les tests ont réussi
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Construire l'image
+        run: docker build -t ${{ env.IMAGE_NAME }}:test .
+
+      # Test de fumée : l'image démarre-t-elle et l'API répond-elle ?
+      - name: Vérifier que l'API démarre dans le conteneur
+        run: |
+          docker run -d -p 8000:8000 --name api-test ${{ env.IMAGE_NAME }}:test
+          for i in $(seq 1 20); do
+            if curl -sf http://localhost:8000/health; then
+              echo "API opérationnelle"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "L'API n'a pas répondu dans le conteneur"
+          docker logs api-test
+          exit 1
+
+  # ---------- 3. Publication sur Docker Hub et déploiement ----------
+  deploy:
+    name: Publication et déploiement
+    runs-on: ubuntu-latest
+    needs: build
+    # Uniquement après un push sur main (pas pour les pull requests)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Connexion à Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Construire et publier l'image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+      # Redéploiement de l'API sur l'hébergeur (Render), si le secret est configuré
+      - name: Déclencher le redéploiement de l'API
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -n "$RENDER_DEPLOY_HOOK_URL" ]; then
+            curl -sf -X POST "$RENDER_DEPLOY_HOOK_URL"
+            echo "Redéploiement de l'API déclenché"
+          else
+            echo "Pas de RENDER_DEPLOY_HOOK_URL configuré : étape ignorée"
+          fi
+
+      - name: Résumé
+        run: |
+          echo "### Déploiement réussi" >> $GITHUB_STEP_SUMMARY
+          echo "Image publiée : \`${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
