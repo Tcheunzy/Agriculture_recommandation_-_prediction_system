@@ -9,7 +9,6 @@ Usage : python -m src.train
 from pathlib import Path
  
 import joblib
-import mlflow
 import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
@@ -125,6 +124,7 @@ def sauvegarder_references(df: pd.DataFrame, train: pd.DataFrame, dossier: Path)
  
  
 def main() -> None:
+    import mlflow
     df = charger_donnees(CHEMIN_DONNEES)
     train, test = decouper(df)
     X_train, y_train = train[VARIABLES_MODELE], train[CIBLE]

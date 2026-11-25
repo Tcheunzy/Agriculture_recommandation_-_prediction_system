@@ -65,3 +65,7 @@ def test_temperature_hors_limites(client, contexte_france):
 def test_champ_manquant(client):
     reponse = client.post("/predict", json={"pays": "France", "culture": "Wheat"})
     assert reponse.status_code == 422
+
+def test_chat_sans_cle_renvoie_503(client):
+    reponse = client.post("/chat", json={"messages": [{"role": "user", "content": "Bonjour"}]})
+    assert reponse.status_code == 503

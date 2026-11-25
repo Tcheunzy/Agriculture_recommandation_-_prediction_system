@@ -16,8 +16,8 @@ Elle propose deux fonctions complémentaires :
 
 | Service | Adresse |
 |---|---|
-| Application Streamlit | _à compléter : https://….streamlit.app_ |
-| API (documentation interactive) | _à compléter : https://….onrender.com/docs_ |
+| Application Streamlit | https://tcheunzy-agriculture-recommandation---prediction--appapp-yxdwop.streamlit.app/ |
+| API (documentation interactive) | https://agritech-api-hcep.onrender.com/docs#/default/recommend_recommend_post|
 | Image Docker | [cheunp/agritech-api](https://hub.docker.com/r/cheunp/agritech-api) |
 
 > L'API est hébergée sur l'offre gratuite de Render : après une période d'inactivité, la première requête peut prendre une trentaine de secondes.
@@ -106,6 +106,15 @@ Les précipitations et l'indice d'aridité de De Martonne ont été testés puis
 | Référence « moyenne par culture » (test) | 5,78 | 3,49 | 0,538 |
 
 **Variables les plus importantes** (importance par permutation sur le test) : la culture, puis le pays, le niveau de pesticides et la température.
+
+## Réentraîner le modèle
+
+    uv run python -m src.train
+
+Le script recharge `data/dataset_consolide.csv`, découpe par date (entraînement ≤ 2009,
+test 2010–2013), entraîne XGBoost avec les hyperparamètres retenus, enregistre le run
+dans l'expérience MLflow `entrainement_production`, puis écrase `models/` (modèle et
+tables de référence). Committer `models/` déclenche le déploiement via la CI/CD.
 
 ### Limites
 
