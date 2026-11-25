@@ -51,6 +51,63 @@ def charger_references() -> tuple[pd.DataFrame, list[str]] | None:
     return pd.DataFrame(pays["pays"]).set_index("Area"), cultures["cultures"]
 
 
+# ---------- Assistant conversationnel ----------
+def afficher_assistant() -> None:
+    """Onglet de discussion : envoie la conversation à /chat et affiche la réponse."""
+    st.subheader("Assistant")
+    st.caption(
+        "Posez votre question en langage courant (ex. : « Que cultiver en Inde en 2012 ? »). "
+        "Les chiffres viennent toujours du modèle, jamais de l'assistant."
+    )
+
+    # L'historique survit aux rechargements de la page grâce à session_state
+    if "historique" not in st.session_state:
+        st.session_state.historique = []
+
+    if st.button("Nouvelle conversation"):
+        st.session_state.historique = []
+        st.rerun()
+
+    # Réaffiche toute la conversation à chaque rechargement
+    for message in st.session_state.historique:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+    question = st.chat_input("Votre question…")
+    if not question:
+        return
+
+    st.session_state.historique.append({"role": "user", "content": question})
+    with st.chat_message("user"):
+        st.markdown(question)
+
+    with st.chat_message("assistant"):
+        with st.spinner("L'assistant réfléchit…"):
+            try:
+                reponse = requests.post(
+                    f"{API_URL}/chat",
+                    json={"messages": st.session_state.historique[-20:]},
+                    timeout=120,
+                )
+            except requests.RequestException:
+                reponse = None
+
+        if reponse is not None and reponse.ok:
+            texte = reponse.json()["reponse"]
+            st.markdown(texte)
+            st.session_state.historique.append({"role": "assistant", "content": texte})
+        else:
+            if reponse is None:
+                detail = "API injoignable (elle peut mettre une minute à démarrer, réessayez)."
+            else:
+                try:
+                    detail = reponse.json().get("detail", reponse.text)
+                except ValueError:  # réponse qui n'est pas du JSON (page d'erreur du serveur)
+                    detail = f"erreur {reponse.status_code}"
+            st.error(f"L'assistant n'a pas pu répondre : {detail}")
+            st.session_state.historique.pop()
+
+
 # ---------- En-tête ----------
 st.title("🌾 Agritech Answers")
 st.caption("Estimez le rendement de vos cultures et identifiez la culture la plus adaptée à vos conditions.")
@@ -63,33 +120,36 @@ df_pays, cultures = references
 # ---------- Barre latérale : mode et contexte ----------
 with st.sidebar:
     st.header("Paramètres")
-    mode = st.radio("Mode", ["Prédiction", "Recommandation"], horizontal=True)
+    mode = st.radio("Mode", ["Prédiction", "Recommandation", "Assistant"], horizontal=True)
 
-    pays = st.selectbox("Pays", df_pays.index.tolist(), index=df_pays.index.tolist().index("France"))
-    defauts = df_pays.loc[pays]
+    # Les paramètres ne servent pas à l'assistant : l'utilisateur les donne dans sa question
+    if mode != "Assistant":
+        pays = st.selectbox("Pays", df_pays.index.tolist(), index=df_pays.index.tolist().index("France"))
+        defauts = df_pays.loc[pays]
 
-    annee = st.slider("Année", min_value=1990, max_value=2030, value=2013)
+        annee = st.slider("Année", min_value=1990, max_value=2030, value=2013)
 
-    # Les clés dépendent du pays : changer de pays remet les valeurs par défaut de ce pays
-    temperature = st.slider(
-        "Température moyenne annuelle du pays (°C)",
-        min_value=-5.0, max_value=35.0,
-        value=float(round(defauts["avg_temp_defaut"], 1)), step=0.1,
-        key=f"temperature_{pays}",
-    )
-    pesticides_defaut = float(defauts["pesticides_tonnes_defaut"])
-    pesticides = st.slider(
-        "Pesticides utilisés dans le pays (tonnes)",
-        min_value=0.0,
-        max_value=float(max(round(pesticides_defaut * 3), 100)),
-        value=float(round(pesticides_defaut)),
-        step=float(max(round(pesticides_defaut / 100), 1)),
-        key=f"pesticides_{pays}",
-        help="Indicateur du niveau d'intensification agricole du pays. "
-             f"Valeur récente pour {pays} : {pesticides_defaut:,.0f} t.",
-    )
+        # Les clés dépendent du pays : changer de pays remet les valeurs par défaut de ce pays
+        temperature = st.slider(
+            "Température moyenne annuelle du pays (°C)",
+            min_value=-5.0, max_value=35.0,
+            value=float(round(defauts["avg_temp_defaut"], 1)), step=0.1,
+            key=f"temperature_{pays}",
+        )
+        pesticides_defaut = float(defauts["pesticides_tonnes_defaut"])
+        pesticides = st.slider(
+            "Pesticides utilisés dans le pays (tonnes)",
+            min_value=0.0,
+            max_value=float(max(round(pesticides_defaut * 3), 100)),
+            value=float(round(pesticides_defaut)),
+            step=float(max(round(pesticides_defaut / 100), 1)),
+            key=f"pesticides_{pays}",
+            help="Indicateur du niveau d'intensification agricole du pays. "
+                 f"Valeur récente pour {pays} : {pesticides_defaut:,.0f} t.",
+        )
 
-contexte = {"pays": pays, "annee": annee, "temperature": temperature, "pesticides_tonnes": pesticides}
+if mode != "Assistant":
+    contexte = {"pays": pays, "annee": annee, "temperature": temperature, "pesticides_tonnes": pesticides}
 
 # ---------- Mode Prédiction ----------
 if mode == "Prédiction":
@@ -114,7 +174,7 @@ if mode == "Prédiction":
                 )
 
 # ---------- Mode Recommandation ----------
-else:
+elif mode == "Recommandation":
     st.subheader("Recommandation de culture")
 
     with st.expander("Prix de vente par tonne (facultatif)"):
@@ -190,3 +250,7 @@ else:
                 "Rendement relatif : rendement estimé comparé au rendement moyen mondial de la culture. "
                 "Les cultures non cultivées dans ce pays sont classées en dernier : leurs estimations sont moins fiables."
             )
+
+# ---------- Mode Assistant ----------
+else:
+    afficher_assistant()
