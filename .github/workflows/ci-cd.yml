@@ -117,3 +117,15 @@ jobs:
         run: |
           echo "### Déploiement réussi" >> $GITHUB_STEP_SUMMARY
           echo "Image publiée : \`${{ env.IMAGE }}:${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+  
+  notification-echec:
+    runs-on: ubuntu-latest
+    needs: [tests, build, deploy]
+    if: failure()
+    steps:
+      - name: Signaler l'échec
+        run: |
+          echo "## ❌ Échec du pipeline" >> $GITHUB_STEP_SUMMARY
+          echo "Branche : ${{ github.ref_name }} — commit : ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "Détails : ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
+          echo "::error::Le pipeline a échoué, voir le résumé du run."

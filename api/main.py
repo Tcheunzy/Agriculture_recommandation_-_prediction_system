@@ -1,18 +1,35 @@
 """API de prédiction de rendement et de recommandation de cultures."""
+import logging
 from contextlib import asynccontextmanager
 from pathlib import Path
 
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
+from pydantic import ValidationError
 
+from api.chatbot import creer_client, repondre
 from api.schemas import (
+    ReponseChat,
     ReponsePrediction,
     ReponseRecommandation,
+    RequeteChat,
     RequetePrediction,
     RequeteRecommandation,
 )
 from src.recommandation import calculer_resultats, classer_cultures, predire
+import logging
+from pydantic import ValidationError
+from api.chatbot import creer_client, repondre
+from api.schemas import RequeteChat, ReponseChat
+from openai import APIError, RateLimitError
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s : %(message)s",
+)
+logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
+etat_chat = {"client": None}
 
 # ---------- Chemins ----------
 RACINE = Path(__file__).resolve().parent.parent
@@ -34,6 +51,7 @@ async def lifespan(app: FastAPI):
     # Pour chaque pays, l'ensemble des cultures présentes dans les données d'entraînement
     paires = pd.read_csv(DOSSIER_MODELES / "references_pays_cultures.csv")
     ressources["cultures_par_pays"] = paires.groupby("Area")["Crop"].apply(set).to_dict()
+    etat_chat["client"] = creer_client()
     yield
     ressources.clear()
 
@@ -116,3 +134,53 @@ def recommend(requete: RequeteRecommandation):
         critere_de_tri="revenu estimé" if prix_fournis else "rendement relatif",
         classement=classer_cultures(resultats, prix_fournis=prix_fournis),
     )
+
+def completer_par_defaut(arguments: dict) -> dict:
+    """Ajoute température et pesticides par défaut du pays s'ils manquent."""
+    verifier_pays(arguments.get("pays"))          # lève une 422 si le pays est inconnu
+    ligne = ressources["pays"].loc[arguments["pays"]]      # ⚠ ta table references_pays indexée par Area
+    arguments.setdefault("temperature", float(ligne["avg_temp_defaut"]))
+    arguments.setdefault("pesticides_tonnes", float(ligne["pesticides_tonnes_defaut"]))
+    return arguments
+
+
+def executer_outil(nom: str, arguments: dict) -> dict:
+    """Exécute un outil demandé par Mistral en réutilisant les endpoints existants."""
+    try:
+        arguments = completer_par_defaut(arguments)
+        if nom == "predire_rendement":
+            resultat = predict(RequetePrediction(**arguments))        
+        elif nom == "recommander_cultures":
+            resultat = recommend(RequeteRecommandation(**arguments))  
+        else:
+            return {"erreur": f"Outil inconnu : {nom}"}
+        return resultat.model_dump() if hasattr(resultat, "model_dump") else resultat
+    except HTTPException as e:
+        return {"erreur": e.detail}
+    except ValidationError as e:
+        return {"erreur": f"Paramètres invalides : {e.errors(include_url=False, include_context=False)}"}
+
+
+@app.post("/chat", response_model=ReponseChat)
+def chat(requete: RequeteChat):
+    client = etat_chat["client"]
+    if client is None:
+        raise HTTPException(status_code=503, detail="Assistant indisponible : clé du LLM non configurée.")
+    historique = [m.model_dump() for m in requete.messages]
+    try:
+        texte, outils = repondre(
+            client,
+            historique,
+            ressources["cultures"].index.tolist(),
+            executer_outil,
+        )
+    except RateLimitError:
+        raise HTTPException(status_code=503, detail="Assistant momentanément saturé, réessayez dans une minute.")
+    except APIError:
+        logger.exception("Erreur de l'API du LLM")
+        raise HTTPException(status_code=502, detail="L'assistant n'a pas pu répondre, réessayez.")
+    except Exception:
+        logger.exception("Erreur lors de l'appel au LLM")
+        raise HTTPException(status_code=502, detail="L'assistant n'a pas pu répondre, réessayez.")
+
+    return ReponseChat(reponse=texte, outils_appeles=outils)

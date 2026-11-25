@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from typing import Literal
 
 
 # ---------- Requêtes ----------
@@ -48,3 +49,15 @@ class ResultatCulture(BaseModel):
 class ReponseRecommandation(BaseModel):
     critere_de_tri: str
     classement: list[ResultatCulture]
+
+# ---------- Réponses LLM -----------
+class MessageChat(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str = Field(min_length=1, max_length=2000)
+
+class RequeteChat(BaseModel):
+    messages: list[MessageChat] = Field(min_length=1, max_length=20)
+
+class ReponseChat(BaseModel):
+    reponse: str
+    outils_appeles: list[str]
